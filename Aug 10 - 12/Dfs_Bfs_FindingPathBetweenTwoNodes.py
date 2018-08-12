@@ -38,12 +38,12 @@ def bfsSearch(node1, node2):
                 queue.append(x)
 
 def main():
-    a = Node("sophia")
-    b = Node("Hello")
-    c = Node("BI")
-    d = Node("dfd")
-    e = Node("23")
-    f = Node("wefw")
+    a = Node("S")
+    b = Node("O")
+    c = Node("P")
+    d = Node("H")
+    e = Node("I")
+    f = Node("A")
     a.adj.append(b)
     b.adj.append(c)
     c.adj.append(d)
