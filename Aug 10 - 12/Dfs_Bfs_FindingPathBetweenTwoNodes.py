@@ -19,6 +19,21 @@ def dfsSearch(node1, node2):
         if node.visited == False:
             dfsSearch(node, node2)
 
+def iterative_dfs(node1, node2):
+    stack = []
+    stack.append(node1)
+    status = False
+    while len(stack) != 0:
+        top = stack.pop()
+        if top.visited == False:
+            if top == node2:
+                status = True
+        top.visited = True
+        for adj in top.adj:
+            stack.append(adj)
+    return status
+
+
 from collections import deque
 
 def bfsSearch(node1, node2):
