@@ -12,7 +12,6 @@ class Solution(object):
 
         for x in words:
             status = True
-            x = regex.sub('', x)
             for y in licensePlate:
                 if y not in x or licensePlate.count(y) > x.count(y):
                     status = False
