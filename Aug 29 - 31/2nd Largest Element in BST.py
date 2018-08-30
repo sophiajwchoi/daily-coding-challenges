@@ -1,6 +1,6 @@
-##Write a function to find the 2nd largest element in a binary search tree. ↴
+##Write a function to find the 2nd largest element in a binary search tree. 
 ##
-##Here's a sample binary tree node class:
+##Debugging in process
 
 class Node:
     def __init__(self, val):
@@ -8,35 +8,56 @@ class Node:
         self.left = None
         self.right = None
 
+def binary_insert(root, node):
+    if root:
+        if root.val < node.val:
+            if root.left != None:
+                binary_insert(root.left, node)
+            else:
+                root.left = node
+        if root.val > node.val:
+            if root.right != None:
+                binary_insert(root.right, node)
+            else:
+                root.right = node
+    else:
+        root = node
+        
+def find_largest_BST(root):          
+    if root:
+        curr = root
 
+        while curr:
+            if not curr.right:
+                return curr.val
+            curr = curr.right
+            
 def find_2nd_largest_BST(root):
-    if root != None:
-        first = root.val
-        second = root.val
-        search(first, second, root)
-    else:
-        return None
-    
 
-def search(first, second, root):
-
-    if root != None:
-        print(root.val)
-        print(first)
-        print(second)
-        if root.val > first:
-            temp = first
-            first = root.val
-            second = temp
-        if root.val < first and root.val > second:
-            second = root.val
-        search(first, second, root.left)
+    if root != None and (root.left != None and root.right != None):
+            search(first, second, root.left)
+            if root.val > first:
+                temp = first
+                first = root.val
+                second = temp
+            if root.val < first and root.val > second:
+                second = root.val
+            search(first, second, root.right)
+            ##debugging required
+        else:
+            return
         search(first, second, root.right)
-        ##debugging required
-    else:
-        return
 
-    return second
+        return second
+
+def search2(li, root):
+
+    if root != None:
+        li.append(root)
+        search2(li, root.left)
+        search2(li,root.right)
+
+    return li
 
 def main():
     a = Node(3)
@@ -44,8 +65,10 @@ def main():
     c = Node(8)
     d = Node(9)
     e = Node(2)
-    a.left = b
-    a.right = c
-    b.left = d
-    d.right = e
-    find_2nd_largest_BST(a)
+    binary_insert(a, b)
+    binary_insert(a, c)
+    binary_insert(a, d)
+    binary_insert(a, e)
+    li = []
+    li = search2(li, a)
+    print(li[-2])
