@@ -16,3 +16,12 @@ class Solution(object):
                     subset.append(nums[k])
             subsets.append(subset)
         return subsets
+
+
+##Another approach 
+    def powerset(li):
+        result = [[]]
+        for x in li:
+            new_subset = [subset + [x] for subset in result]
+            result.extend(new_subset)
+        return result
