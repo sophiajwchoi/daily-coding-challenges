@@ -17,7 +17,7 @@ def dec_to_bin(digit):
         binary += str(digit2 % 2)
         digit2 = digit2 // 2
     binary = binary[::-1]     #Reverse the string
-    if digit2 // 2 == 0 and len(binary) != 4:
+    if len(binary) != 4:
         if digit2 == 1:
             binary = "1" + binary
         else:
