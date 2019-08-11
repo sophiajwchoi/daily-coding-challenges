@@ -5,14 +5,12 @@ Given a paragraph and a list of banned words, return the most frequent word that
 
 Words in the list of banned words are given in lowercase, and free of punctuation.  Words in the paragraph are not case sensitive.  The answer is in lowercase. */
 
-#include <algorithm>  
 class Solution {
 public:
     string mostCommonWord(string paragraph, vector<string>& banned) {
         unordered_map<string, int> m;
         for(auto &c : paragraph)
             c =  isalpha(c)? tolower(c) : ' '; 
-         //char iteration
         
         istringstream iss(paragraph);
         string curr_word;
